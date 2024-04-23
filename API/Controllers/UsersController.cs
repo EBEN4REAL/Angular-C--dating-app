@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")] // /api/users
+    [Route("api/[controller]")]
     public class UsersController
     {
         private readonly DataContext _context;
