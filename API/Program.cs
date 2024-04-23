@@ -19,4 +19,4 @@ app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("ht
 
 app.MapControllers();
 
-app.Run();
+app.Run();  
