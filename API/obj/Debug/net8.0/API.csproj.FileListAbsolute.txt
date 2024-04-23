@@ -120,3 +120,4 @@
 /Users/ebenezerigbinoba/Documents/Projects/C#-Angular-dating-app/API/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /Users/ebenezerigbinoba/Documents/Projects/C#-Angular-dating-app/API/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /Users/ebenezerigbinoba/Documents/Projects/C#-Angular-dating-app/API/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/ebenezerigbinoba/Documents/Projects/C#-Angular-dating-app/API/obj/Debug/net8.0/API.sourcelink.json
