@@ -13,6 +13,8 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
+import { ToastrModule } from 'ngx-toastr';
+
 // import { MemberListComponent } from './members/member-list/member-list.component';
 // import { ListsComponent } from './lists/lists.component';
 // import { MessagesComponent } from './messages/messages.component';
@@ -72,6 +74,7 @@ import { MessagesComponent } from './messages/messages.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     
