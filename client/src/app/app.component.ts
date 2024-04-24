@@ -1,5 +1,49 @@
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
+// import { Component, OnInit } from '@angular/core';
+// import { AccountService } from './_services/account.service';
+// import { User } from './_models/user';
+
+// @Component({
+//   selector: 'app-root',
+//   templateUrl: './app.component.html',
+//   styleUrls: ['./app.component.css']
+// })
+// export class AppComponent implements OnInit {
+//   title = "Dating app"
+//   users: any;
+  
+//   constructor(private http: HttpClient, private accountService: AccountService) {
+
+//   }
+//   ngOnInit(): void {
+//     this.getUser()
+//     this.setCurrentUser()
+//   }
+
+//   getUser() {
+//     const apiUrl = 'https://localhost:5001/api/users';
+
+//     this.http.get(apiUrl).subscribe({
+//       next: response => this.users = response,
+//       error: error => console.log(error),
+//       complete: () => console.log("Request has completed")
+//     })
+//   }
+
+//   setCurrentUser() {
+//     const userString = localStorage.getItem('user');
+//     if(!userString) return ;
+//     const user: User = JSON.parse(userString)
+//     this.accountService.setCurrentUser(user);
+//   }
+// }
+
+
+
+
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from './_services/account.service';
+import { User } from './_models/user';
 
 @Component({
   selector: 'app-root',
@@ -7,20 +51,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = "Dating app"
+  title = 'Dating app';
   users: any;
-  
-  constructor(private http: HttpClient) {
 
-  }
+  constructor(private accountService: AccountService) {}
+
   ngOnInit(): void {
-    const apiUrl = 'https://localhost:5001/api/users';
-
-    this.http.get(apiUrl).subscribe({
-      next: response => this.users = response,
-      error: error => console.log(error),
-      complete: () => console.log("Request has completed")
-    })
+    this.setCurrentUser();
   }
-}
 
+  setCurrentUser() {
+    const userString = localStorage.getItem('user');
+    if (!userString) return;
+    const user: User = JSON.parse(userString);
+    this.accountService.setCurrentUser(user);
+  }
+
+
+}
