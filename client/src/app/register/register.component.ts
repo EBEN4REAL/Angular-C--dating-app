@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  model: any = {}
   @Output() cancelRegister = new EventEmitter();
   registerForm: FormGroup = new FormGroup({});
   maxDate: Date = new Date();
@@ -46,9 +47,9 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    const dob = this.GetDateOnly(this.registerForm.controls['dateOfBirth'].value)
-    const values = {...this.registerForm.value, dateOfBirth: this.GetDateOnly(dob)}
-    this.accountService.register(values).subscribe({
+    // const dob = this.GetDateOnly(this.registerForm.controls['dateOfBirth'].value)
+    // const values = {...this.registerForm.value, dateOfBirth: this.GetDateOnly(dob)}
+    this.accountService.register(this.model).subscribe({
       next: () => {
         this.router.navigateByUrl('/members');
       },
@@ -67,5 +68,4 @@ export class RegisterComponent implements OnInit {
     let theDob = new Date(dob);
     return new Date(theDob.setMinutes(theDob.getMinutes()-theDob.getTimezoneOffset())).toISOString().slice(0,10);
   }
-
 }

@@ -2189,6 +2189,11 @@ bootstrap@^5.2.3:
   resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.3.tgz"
   integrity sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==
 
+bootswatch@^5.3.3:
+  version "5.3.3"
+  resolved "https://registry.npmjs.org/bootswatch/-/bootswatch-5.3.3.tgz"
+  integrity sha512-cJLhobnZsVCelU7zdH/L7wpcXAyUoTX4/5l2dWQ0JXgaVK80BdTQNU/ImWwoyIGBeyms4iQDAdNtOfPQZf0Atg==
+
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz"
