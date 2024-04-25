@@ -7,7 +7,7 @@ import { User } from '../_models/user';
   providedIn: 'root'
 })
 export class AccountService {
-  baseUrl = "https://localhost:5001/api"
+  baseUrl = "https://localhost:5001/api/"
   private currentUserSource = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSource.asObservable();
 
@@ -26,7 +26,7 @@ export class AccountService {
   }
   
   register(model: {username: string, password: string}) {
-    return this.http.post<User>(`${this.baseUrl}/account/register`, model).pipe(
+    return this.http.post<User>(`${this.baseUrl}account/register`, model).pipe(
       map(response => {
         const user = response;
         if (user) {
