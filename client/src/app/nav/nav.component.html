@@ -20,7 +20,7 @@
                 Welcome {{user.username}} <span class="caret"></span>
             </a>
             <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu mt-3" role="menu" aria-labelledby="button-basic">
-                <li role="menuitem"><a class="dropdown-item" href="#">Edit Profile</a></li>
+                <li role="menuitem"><a class="dropdown-item" routerLink="/member/edit">Edit Profile</a></li>
                 <li role="menuitem"><a class="dropdown-item" id="nav-logout" (click)="logout()">Logout</a></li>
             </ul>
         </div>
