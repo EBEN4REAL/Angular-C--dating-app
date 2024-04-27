@@ -106,5 +106,26 @@ namespace API.Controllers
 
             return BadRequest("Problem setting the main photo");
         }
+
+        
+        [HttpDelete("photo/{photoId}")]
+        public async Task<ActionResult> DeletePhoto(int photoId)
+        {
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+
+            if(user == null) return NotFound();
+
+            var filteredPhotos = user.Photos.Where(photo => photo.Id != photoId).ToList();
+
+            user.Photos = filteredPhotos;
+            
+            if(await _userRepository.SaveAllAsync()) {
+                return Ok(new {
+                    successful = true
+                });
+            }
+            
+            return BadRequest("Failed to delete photo");
+        }
     }
 }

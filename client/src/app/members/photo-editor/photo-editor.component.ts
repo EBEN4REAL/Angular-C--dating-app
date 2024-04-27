@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { take } from 'rxjs';
 import { Member } from 'src/app/_models/members';
+import { Photo } from 'src/app/_models/photo';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
@@ -35,6 +36,29 @@ export class PhotoEditorComponent implements OnInit {
   fileOverBase(e: any) {
     this.hasBaseDropZoneOver = e
   }
+
+  setMainPhoto(photo: Photo) {
+    this.accountService.setMainPhoto(photo).subscribe({
+      next: () => {
+        if(this.member) {
+          this.member.photos.forEach(ph => {
+            ph.isMain = ph.id === photo.id ? true : false; 
+          })
+        }
+      }
+    })
+  }
+
+  deletePhoto(photoId: number) {
+    this.accountService.deletePhoto(photoId).subscribe({
+      next: () => {
+        if(this.member) {
+          this.member.photos = this.member.photos.filter(ph => ph.id !== photoId)
+        }
+      }
+    })
+  }
+
   initializeUploader() {
     this.uploader =  new FileUploader({
       url: this.baseUrl + '/users/add-photo',

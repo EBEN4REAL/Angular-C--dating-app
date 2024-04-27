@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { User } from '../_models/user';
 import { environment } from 'src/environments/environment.development';
+import { Photo } from '../_models/photo';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,22 @@ export class AccountService {
         }
       })
     )
+  }
+
+  setMainPhoto(photo: Photo) {
+    return this.http.post<void>(`${this.baseUrl}/users/set-main-photo/${photo.id}`, {})
+      .pipe(
+        map(() => {})
+      )
+  }
+
+  deletePhoto(photoId: number) {
+    return this.http.delete<{successful: boolean}>(`${this.baseUrl}/users/photo/${photoId}`)
+      .pipe(
+        map((response) => {
+          console.log("delete respone => ", response)
+        })
+      )
   }
   
   register(model: {username: string, password: string}) {
