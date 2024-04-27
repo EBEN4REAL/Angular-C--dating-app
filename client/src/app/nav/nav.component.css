@@ -1,3 +1,7 @@
 #nav-logout{
     cursor: pointer;
 }
+
+img {
+    max-height: 50px;
+}
