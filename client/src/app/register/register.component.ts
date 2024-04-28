@@ -10,13 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  model: any = {}
   @Output() cancelRegister = new EventEmitter();
   registerForm: FormGroup = new FormGroup({});
   maxDate: Date = new Date();
   validationErrors: string[] | undefined;
 
-  constructor(private accountService: AccountService, 
+  constructor(private accountService: AccountService, private toastr: ToastrService, 
     private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
@@ -47,13 +46,14 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    // const dob = this.GetDateOnly(this.registerForm.controls['dateOfBirth'].value)
-    // const values = {...this.registerForm.value, dateOfBirth: this.GetDateOnly(dob)}
-    this.accountService.register(this.model).subscribe({
-      next: () => {
+    console.log(this.registerForm.value)
+    const dob = this.GetDateOnly(this.registerForm.controls['dateOfBirth'].value)
+    const values = {...this.registerForm.value, dateOfBirth: this.GetDateOnly(dob)}
+    this.accountService.register(values).subscribe({
+      next: response => {
         this.router.navigateByUrl('/members');
       },
-      error: (error: string[] | undefined) => {
+      error: error => {
         this.validationErrors = error;
       } 
     })
@@ -65,7 +65,10 @@ export class RegisterComponent implements OnInit {
 
   private GetDateOnly(dob: string | undefined) {
     if (!dob) return;
-    let theDob = new Date(dob);
-    return new Date(theDob.setMinutes(theDob.getMinutes()-theDob.getTimezoneOffset())).toISOString().slice(0,10);
+    return new Date(dob).toISOString().split("T")[0]
+    // let theDob = new Date(dob);
+    // console.log("theDob", typeof theDob)
+    // return new Date(theDob.setMinutes(theDob.getMinutes()-theDob.getTimezoneOffset())).toISOString().slice(0,10);
   }
+
 }
